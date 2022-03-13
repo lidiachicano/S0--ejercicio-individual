@@ -1,0 +1,51 @@
+DROP DATABASE IF EXISTS Campeonato;
+CREATE DATABASE Campeonato;
+USE Campeonato;
+CREATE TABLE Jugadores (
+  Id INTEGER PRIMARY KEY NOT NULL,
+  Nombre VARCHAR(50) NOT NULL,
+  Usuario VARCHAR(50) NOT NULL,
+  Contraseña VARCHAR(40) NOT NULL
+ 
+)ENGINE = InnoDB;
+
+CREATE TABLE Partidas (
+ Id INTEGER PRIMARY KEY NOT NULL,
+ Fecha DATE NOT NULL
+)ENGINE = InnoDB;
+
+CREATE TABLE Participacion (
+ IdJ INTEGER NOT NULL,
+ IdP INTEGER NOT NULL,
+ Posicion INTEGER NOT NULL,
+ FOREIGN KEY (IdJ) REFERENCES Jugadores(Id),
+ FOREIGN KEY (IdP) REFERENCES Partidas(Id)
+)ENGINE = InnoDB;
+
+
+INSERT INTO Jugadores VALUES(1,'Juan', 'Juan01', SHA1('Juanito'));
+INSERT INTO Jugadores VALUES(2,'Maria', 'Maria01', SHA1('Maria123'));
+INSERT INTO Jugadores VALUES(3,'Pedro', 'Pedro01', SHA1('Pedro123'));
+INSERT INTO Jugadores VALUES(4,'Luis', 'Luis01', SHA1('Luismi'));
+INSERT INTO Jugadores VALUES(5,'Julia', 'Julia01', SHA1('Julia123'));
+
+
+INSERT INTO Partidas VALUES(1,'2022-01-14');
+INSERT INTO Partidas VALUES(2,'2021-12-12');
+INSERT INTO Partidas VALUES(3,'2021-12-06');
+INSERT INTO Partidas VALUES(4,'2022-02-07');
+INSERT INTO Partidas VALUES(5,'2022-03-09');
+INSERT INTO Partidas VALUES(6,'2022-03-09');
+INSERT INTO Partidas VALUES(7,'2022-02-19');
+INSERT INTO Partidas VALUES(8,'2022-01-25');
+
+
+
+INSERT INTO Participacion VALUES(1,2,1);
+INSERT INTO Participacion VALUES(2,4,2);
+INSERT INTO Participacion VALUES(3,1,1);
+INSERT INTO Participacion VALUES(4,1,3);
+INSERT INTO Participacion VALUES(5,3,2);
+INSERT INTO Participacion VALUES(6,3,3);
+INSERT INTO Participacion VALUES(7,4,4);
+INSERT INTO Participacion VALUES(8,1,1);
